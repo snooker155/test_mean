@@ -8,5 +8,6 @@ var config = require('./config'),
 module.exports = function () {
     var db = mongoose.connect(config.db);
     require('../app/models/user.server.model');
+    require('../app/models/task.server.model');
     return db;
 };

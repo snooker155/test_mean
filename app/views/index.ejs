@@ -1,7 +1,20 @@
-<% if ( user ) { %>
-<h2>Hello <%=user%> </h2>
-<a href="/users/logout">Logout</a>
-<% } else { %>
-<a href="/register">Register</a>
-<a href="/login">Login</a>
-<% } %>
+<html>
+    <head>
+
+    </head>
+
+    <body ng-app="mean">
+
+        <% if ( user ) { %>
+            <h2>Hello <%=user%> </h2>
+            <a href="/users/logout">Logout</a>
+        <% } else { %>
+            <a href="/register">Register</a>
+            <a href="/login">Login</a>
+        <% } %>
+
+        <script type="text/javascript" src="/javascripts/angular/angular.js"></script>
+        <script type="text/javascript" src="/javascripts/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="/javascripts/angular-route/angular-resource.min.js"></script>
+    </body>
+</html>
