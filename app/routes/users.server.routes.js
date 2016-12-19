@@ -12,16 +12,11 @@ router.param('userId', users.userByID);
 router.route('/register').get(users.renderRegister).post(users.register);
 
 router.route('/login').get(users.renderLogin).post(
-    passport.authenticate('local'
-    //     , {
-    // successRedirect: '/',
-    // failureRedirect: '/login',
-    // failureFlash: true
-    // }
-),
-    function (req, res, next) {
-    console.log(req.user);
-});
+    passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/login',
+    failureFlash: true
+}));
 
 router.get('/logout', users.logout);
 

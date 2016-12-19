@@ -17,16 +17,17 @@
         <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
         <link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
+        <script type="text/javascript">
+            window.user = <%= user || 'null' %>
+        </script>
+
     </head>
 
     <body ng-app="mean">
 
-        <section ng-view class="main-section"></section>
+        <h1><%= title %></h1>
 
-        <script type="text/javascript">
-            console.log(user);
-            window.user = <%- user || 'null' %>
-        </script>
+        <section ng-view class="main-section"></section>
 
         <script type="text/javascript" src="/javascripts/jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="/javascripts/bootstrap/dist/js/bootstrap.min.js"></script>
