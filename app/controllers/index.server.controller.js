@@ -3,8 +3,9 @@
  */
 
 exports.render = function (req, res) {
+    // console.log(req.session.username);
     res.render('index', {
         title: 'MEAN MVC',
-        user: req.user ? req.user.username : ''
+        user: JSON.stringify(req.user)
     });
 }

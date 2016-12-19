@@ -14,10 +14,6 @@ var tasks = require('../app/routes/tasks.server.routes');
 
 var app = express();
 
-// set passport
-app.use(passport.initialize());
-app.use(passport.session());
-
 // view engine setup
 app.set('views', './app/views');
 app.set('view engine', 'ejs');
@@ -35,6 +31,10 @@ app.use(session({
   resave: true,
   secret: 'OurSuperSecretCookieSecret'
 }));
+
+// set passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', index);
 app.use('/', users);
