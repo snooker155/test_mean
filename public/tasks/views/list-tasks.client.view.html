@@ -1,4 +1,4 @@
-<div data-ng-controller="TodosController">
+<div data-ng-controller="TasksController">
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -41,19 +41,19 @@
 
     <section data-ng-init="find()">
         <div class="container">
-            <h1>Todos</h1>
+            <h1>Tasks</h1>
             Show completed: <input type="checkbox" ng-model="showcompleted" ng-init="showcompleted=true">
             <ul>
-                <li data-ng-repeat="todo in todos" ng-if="showcompleted && todo.completed || !todo.completed">
-                    <a data-ng-href="#!/todos/{{todo._id}}" data-ng-bind="todo.title" ng-class="todo.completed?'completed':''"></a>
-                    (<small data-ng-bind="todo.created | date:'short'"></small>)
+                <li data-ng-repeat="task in tasks" ng-if="showcompleted && task.completed || !task.completed">
+                    <a data-ng-href="#!/tasks/{{task._id}}" data-ng-bind="task.title" ng-class="task.completed?'completed':''"></a>
+                    (<small data-ng-bind="task.created | date:'short'"></small>)
                     <br>
 
-                    <small data-ng-bind="todo.comment" class="comment"></small>
+                    <small data-ng-bind="task.comment" class="comment"></small>
                 </li>
             </ul>
-            <div data-ng-hide="!todos || todos.length">
-                No todos yet, why don't you <a href="/#!/todos/create">create one</a>?
+            <div data-ng-hide="!tasks || tasks.length">
+                No tasks yet, why don't you <a href="/#!/tasks/create">create one</a>?
             </div>
         </div>
     </section>

@@ -6,8 +6,6 @@ angular.module('tasks').controller('TasksController', ['$scope', '$routeParams',
     function($scope, $routeParams, $location, Authentication, Tasks) {
         $scope.authentication = Authentication;
 
-        console.log($scope);
-
         $scope.create = function() {
             var task = new Tasks({
                 title: this.title,
