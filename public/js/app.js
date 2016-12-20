@@ -3,7 +3,18 @@
  */
 
 var appName = 'mean';
-var app = angular.module(appName, ['ngResource', 'ngRoute', 'example', 'users', 'tasks']);
+var app = angular.module(appName, [
+    'ui.router',                    // Routing
+    'oc.lazyLoad',                  // ocLazyLoad
+    'pascalprecht.translate',       // Angular Translate
+    'ngIdle',                       // Idle timer
+    'ngSanitize',
+    'ngResource',
+    'ngRoute',
+    'index',
+    'users',
+    'tasks'
+]);
 
 app.config(['$locationProvider', function($locationProvider) {
     $locationProvider.hashPrefix('!');

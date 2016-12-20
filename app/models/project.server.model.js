@@ -1,11 +1,11 @@
 /**
- * Created by anton on 18.12.16.
+ * Created by anzubare on 20.12.2016.
  */
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var TaskSchema = new Schema({
+var ProjectSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
@@ -25,24 +25,21 @@ var TaskSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'User'
     },
-    project: {
-        type: Schema.ObjectId,
-        ref: 'Project'
-    },
-    completed: {
-        type: Boolean,
-        default: false
-    },
-    assign_to: {
-        type: Schema.ObjectId,
-        ref: 'User'
+    status: {
+        type: String,
+        default: '',
+        trim: true
     },
     due_to: {
         type: Date,
         default: Date.now
     },
-    todos: {},
-    tags: {}
+    progress: {
+        type: String
+    },
+    team: {},
+    tags: {},
+    activities: {}
 });
 
-mongoose.model('Task', TaskSchema);
+mongoose.model('Project', ProjectSchema);

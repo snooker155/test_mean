@@ -11,6 +11,8 @@ var session = require('express-session');
 var index = require('../app/routes/index.server.routes');
 var users = require('../app/routes/users.server.routes');
 var tasks = require('../app/routes/tasks.server.routes');
+var projects = require('../app/routes/projects.server.routes');
+var issues = require('../app/routes/issues.server.routes');
 
 var app = express();
 
@@ -25,6 +27,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('./public'));
+app.use('/css/inspinia', express.static('./node_modules/inspinia/dist'));
 app.use(flash());
 app.use(session({
   saveUninitialized: true,
@@ -39,6 +42,8 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/', users);
 app.use('/', tasks);
+app.use('/', projects);
+app.use('/', issues);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

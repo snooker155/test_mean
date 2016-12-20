@@ -1,9 +1,13 @@
 /**
+ * Created by anzubare on 20.12.2016.
+ */
+
+/**
  * Created by anton on 18.12.16.
  */
 
 var mongoose = require('mongoose'),
-    Task = mongoose.model('Task');
+    Project = mongoose.model('Project');
 
 var getErrorMessage = function(err) {
     if (err.errors) {
@@ -16,80 +20,80 @@ var getErrorMessage = function(err) {
 };
 
 exports.create = function(req, res) {
-    var task = new Task(req.body);
-    task.creator = req.user;
-    task.save(function(err) {
+    var project = new Project(req.body);
+    project.creator = req.user;
+    project.save(function(err) {
         if (err) {
             return res.status(400).send({
                 message: getErrorMessage(err)
             });
         } else {
-            res.json(task);
+            res.json(project);
         }
     });
 };
 
 exports.list = function(req, res) {
-    Task.find().sort('-created').populate('creator', 'name username').exec(function(err, tasks) {
+    Project.find().sort('-created').populate('creator', 'name username').exec(function(err, projects) {
         if (err) {
             return res.status(400).send({
                 message: getErrorMessage(err)
             });
         } else {
-            res.json(tasks);
+            res.json(projects);
         }
     });
 };
 
 exports.read = function(req, res) {
-    res.json(req.task);
+    res.json(req.project);
 };
 
-exports.taskByID = function(req, res, next, id) {
-    Task.findById(id).populate('creator', 'name username').exec(function(err, task) {
+exports.projectByID = function(req, res, next, id) {
+    Project.findById(id).populate('creator', 'name username').exec(function(err, project) {
         if (err)
             return next(err);
 
-        if (!task)
-            return next(new Error('Failed to load task ' + id));
+        if (!project)
+            return next(new Error('Failed to load project ' + id));
 
-        req.task = task;
+        req.project = project;
         next();
     });
 };
 
 exports.update = function(req, res) {
-    var task = req.task;
-    task.title = req.body.title;
-    task.comment = req.body.comment;
-    task.completed = req.body.completed;
+    var project = req.project;
+    project.title = req.body.title;
+    project.comment = req.body.comment;
+    project.completed = req.body.completed;
 
-    task.save(function(err) {
+    project.save(function(err) {
         if (err) {
             return res.status(400).send({
                 message: getErrorMessage(err)
             });
         } else {
-            res.json(task);
+            res.json(project);
         }
     });
 };
 
 exports.delete = function(req, res) {
-    var task = req.task;
-    task.remove(function(err) {
+    var project = req.project;
+    project.remove(function(err) {
         if (err) {
             return res.status(400).send({
                 message: getErrorMessage(err)
             });
         } else {
-            res.json(task);
+            res.json(project);
         }
     });
 };
 
 exports.hasAuthorization = function(req, res, next) {
-    if (req.task.creator.id !== req.user.id) {
+    if (req.project.creator.id !== req.user.id) {
         return res.status(403).send({
             message: 'User is not authorized'
         });

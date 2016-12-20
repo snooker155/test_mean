@@ -16,7 +16,7 @@ router.route('/api/tasks/:taskId')
       .put(users.requiresLogin, tasks.hasAuthorization, tasks.update)
       .delete(users.requiresLogin, tasks.hasAuthorization, tasks.delete);
 
-router.param('taskId', tasks.todoByID);
+router.param('taskId', tasks.taskByID);
 
 module.exports = router;
 
