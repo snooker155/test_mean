@@ -5,15 +5,21 @@
 var appName = 'mean';
 var app = angular.module(appName, [
     'ui.router',                    // Routing
-    'oc.lazyLoad',                  // ocLazyLoad
-    'pascalprecht.translate',       // Angular Translate
-    'ngIdle',                       // Idle timer
-    'ngSanitize',
+    // 'oc.lazyLoad',                  // ocLazyLoad
+    // 'pascalprecht.translate',       // Angular Translate
+    // 'ngIdle',                       // Idle timer
+    // 'ngSanitize',
     'ngResource',
-    'ngRoute',
+    // 'ngRoute',
     'index',
     'users',
-    'tasks'
+    'tasks',
+    'projects',
+    'issues',
+    'teams',
+    'calendar',
+    'agile',
+    'customers'
 ]);
 
 app.config(['$locationProvider', function($locationProvider) {
@@ -23,6 +29,6 @@ app.config(['$locationProvider', function($locationProvider) {
 
 if (window.location.hash === '#_=_') window.location.hash = '#!';
 
-angular.element(document).ready(function() {
-    angular.bootstrap(document, [appName]);
-});
+// angular.element(document).ready(function() {
+//     angular.bootstrap(document, [appName]);
+// });
