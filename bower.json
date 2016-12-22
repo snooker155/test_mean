@@ -13,6 +13,7 @@
     "angular-sanitize": "^1.6.0",
     "INSPINIA_STATIC": "sunday9th/INSPINIA_STATIC",
     "angular-bootstrap": "^2.3.1",
-    "angular-animate": "^1.6.0"
+    "angular-animate": "^1.6.0",
+    "angular-chosen-localytics": "^1.5.1"
   }
 }

@@ -1,75 +1,64 @@
-<div data-ng-controller="TasksController">
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#page-top">MEAN TODO</a>
+<div class="row" data-ng-controller="TasksController" data-ng-init="findOne()">
+    <div class="col-lg-12">
+        <div class="wrapper wrapper-content animated fadeInUp">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="m-b-md">
+                                <h2>New Task</h2>
+                            </div>
+
+                            <form class="form-horizontal" data-ng-submit="update()" novalidate>
+                                <div class="form-group"><label class="col-lg-2 control-label">Title</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" data-ng-model="task.title" id="title" placeholder="Title" required autofocus class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Project</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" data-ng-model="task.project" id="project" placeholder="Project" required class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Assign to</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" data-ng-model="task.assign_to" id="assign_to" placeholder="Assign_to" required class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Due to</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" data-ng-model="task.due_to" id="due_to" placeholder="Due_to" required class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Comments</label>
+                                    <div class="col-lg-10">
+                                        <textarea data-ng-model="task.comment" id="comment" cols="30" rows="10" placeholder="Comment" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Tags</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" data-ng-model="task.tags" id="tags" placeholder="Tags" required class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">Completed</label>
+                                    <div class="col-lg-10">
+                                        <input type="checkbox" data-ng-model="task.completed" ng-checked="task.completed" name="completed" id="completed" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-lg-offset-2 col-lg-10">
+                                        <button class="btn btn-primary" type="submit">Update</button>
+                                    </div>
+                                </div>
+                                <div data-ng-show="error">
+                                    <strong data-ng-bind="error"></strong>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-
-                    <li class="page-scroll" data-ng-show="!authentication.user">
-                        <a href="/login">Login</a>
-                    </li>
-                    <li class="page-scroll" data-ng-show="!authentication.user">
-                        <a href="/register">Register</a>
-                    </li>
-
-                    <li class="page-scroll" data-ng-show="authentication.user">
-                        <a href="/#!/todos/create">CREATE</a>
-                    </li>
-                    <li class="page-scroll" data-ng-show="authentication.user">
-                        <a href="/#!/todos">TODOs</a>
-                    </li>
-                    <li class="page-scroll" data-ng-show="authentication.user">
-                        <a href="/logout">Hello <span data-ng-bind="authentication.user.name" data-ng-show="authentication.user"></span>, Logout?</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-
-    <section data-ng-init="findOne()" class="container">
-        <h1>Edit Task</h1>
-        <form data-ng-submit="update()" novalidate class="form-signin">
-            <div>
-                <label for="title" class="sr-only">Title</label>
-                <div>
-                    <input type="text" data-ng-model="task.title" id="title" placeholder="Title" required autofocus class="form-control">
-                </div>
-            </div>
-
-            <div>
-                <div>
-                    Completed: <input type="checkbox" data-ng-model="task.completed" ng-checked="task.completed" name="completed" id="completed" class="form-control" />
-                </div>
-            </div>
-
-            <div>
-                <label for="comment" class="sr-only">Comment</label>
-                <div>
-                    <textarea data-ng-model="task.comment" id="comment" cols="30" rows="10" placeholder="Comment" class="form-control"></textarea>
-                </div>
-            </div>
-            <div>
-                <button type="submit" class="btn btn-lg btn-primary btn-block">Update TODO</button>
-            </div>
-            <div data-ng-show="error">
-                <strong data-ng-bind="error"></strong>
-            </div>
-        </form>
-    </section>
+    </div>
+</div>
 </div>

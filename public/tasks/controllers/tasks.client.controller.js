@@ -33,28 +33,28 @@ angular.module('tasks').controller('TasksController', ['$scope', '$state', '$loc
             });
         };
 
-        // $scope.update = function() {
-        //     $scope.task.$update(function() {
-        //         $location.path('tasks/' + $scope.task._id);
-        //     }, function(errorResponse) {
-        //         $scope.error = errorResponse.data.message;
-        //     });
-        // };
-        //
-        // $scope.delete = function(task) {
-        //     if (task) {
-        //         task.$remove(function() {
-        //             for (var i in $scope.tasks) {
-        //                 if ($scope.tasks[i] === task) {
-        //                     $scope.tasks.splice(i, 1);
-        //                 }
-        //             }
-        //         });
-        //     } else {
-        //         $scope.task.$remove(function() {
-        //             $location.path('tasks');
-        //         });
-        //     }
-        // };
+        $scope.update = function() {
+            $scope.task.$update(function() {
+                $location.path('tasks/' + $scope.task._id);
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+        };
+
+        $scope.delete = function(task) {
+            if (task) {
+                task.$remove(function() {
+                    for (var i in $scope.tasks) {
+                        if ($scope.tasks[i] === task) {
+                            $scope.tasks.splice(i, 1);
+                        }
+                    }
+                });
+            } else {
+                $scope.task.$remove(function() {
+                    $location.path('tasks');
+                });
+            }
+        };
     }
 ]);
