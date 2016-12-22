@@ -4,6 +4,7 @@
 
 var appName = 'mean';
 var app = angular.module(appName, [
+    'ui.bootstrap',                 // ui.bootstrap
     'ui.router',                    // Routing
     // 'oc.lazyLoad',                  // ocLazyLoad
     // 'pascalprecht.translate',       // Angular Translate

@@ -33,6 +33,10 @@ var TaskSchema = new Schema({
         type: Boolean,
         default: false
     },
+    progress: {
+        type: Boolean,
+        default: false
+    },
     assign_to: {
         type: Schema.ObjectId,
         ref: 'User'

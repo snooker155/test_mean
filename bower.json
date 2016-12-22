@@ -11,6 +11,8 @@
     "angular-translate": "^2.13.1",
     "angular-ui-router": "ui-router#^0.3.2",
     "angular-sanitize": "^1.6.0",
-    "INSPINIA_STATIC": "sunday9th/INSPINIA_STATIC"
+    "INSPINIA_STATIC": "sunday9th/INSPINIA_STATIC",
+    "angular-bootstrap": "^2.3.1",
+    "angular-animate": "^1.6.0"
   }
 }

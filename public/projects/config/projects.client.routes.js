@@ -2,8 +2,9 @@
  * Created by anzubare on 21.12.2016.
  */
 
-angular.module('projects').config(['$stateProvider',
-    function($stateProvider) {
+angular.module('projects').config(['$stateProvider', '$urlRouterProvider',
+    function($stateProvider, $urlRouterProvider) {
+
         var projectsState = {
             name: 'projects',
             url: '/projects',
@@ -11,27 +12,29 @@ angular.module('projects').config(['$stateProvider',
         };
 
         var projectsCreateState = {
-            name: 'projects.create',
+            name: 'projectCreate',
             url: '/projects/create',
             templateUrl: 'projects/views/create-project.client.view.html'
         };
 
         var projectState = {
-            name: 'projects.project',
+            name: 'project',
             url: '/projects/:projectId',
             templateUrl: 'projects/views/view-project.client.view.html'
         };
 
         var projectEditState = {
-            name: 'projects.project.edit',
+            name: 'projectEdit',
             url: '/projects/:projectId/edit',
             templateUrl: 'projects/views/edit-project.client.view.html'
         };
 
-        $stateProvider.state(projectsState);
-        $stateProvider.state(projectsCreateState);
-        $stateProvider.state(projectState);
-        $stateProvider.state(projectEditState);
+        $stateProvider.state(projectsState)
+        .state(projectsCreateState)
+        .state(projectState)
+        .state(projectEditState);
+
+        $urlRouterProvider.otherwise('/');
     }
 ]);
 

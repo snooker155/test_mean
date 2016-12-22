@@ -21,7 +21,6 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$state',
 
         $scope.find = function() {
             $scope.projects = Projects.query();
-            console.log($scope.projects);
         };
 
         // $scope.findOne = function() {
