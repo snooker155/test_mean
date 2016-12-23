@@ -29,13 +29,17 @@ var TaskSchema = new Schema({
         type: Schema.ObjectId,
         ref: 'Project'
     },
+    status: {
+        type: String,
+        default: 'active'
+    },
     completed: {
         type: Boolean,
         default: false
     },
     progress: {
-        type: Boolean,
-        default: false
+        type: Number,
+        default: 0
     },
     assign_to: {
         type: Schema.ObjectId,

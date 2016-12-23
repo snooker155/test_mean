@@ -15,19 +15,51 @@
                                         <input type="text" data-ng-model="title" id="title" placeholder="Title" required autofocus class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Project</label>
+                                <div class="form-group" ng-controller="chosenController" ng-init="getData()"><label class="col-lg-2 control-label">Project</label>
                                     <div class="col-lg-10">
-                                        <input type="text" data-ng-model="project" id="project" placeholder="Project" required class="form-control">
+                                        <select
+                                                chosen
+                                                data-ng-model="project"
+                                                id="project"
+                                                required
+                                                class="form-control"
+                                                data-placeholder-text-single="'Choose a project'"
+                                                ng-options="project.title for project in projects">
+                                            <option value=""></option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Assign to</label>
                                     <div class="col-lg-10">
-                                        <input type="text" data-ng-model="assign_to" id="assign_to" placeholder="Assign_to" required class="form-control">
+                                        <select
+                                                chosen
+                                                multiple
+                                                data-ng-model="assign_to"
+                                                id="assign_to"
+                                                required
+                                                class="form-control"
+                                                data-placeholder-text-single="'Choose a user'"
+                                                ng-options="user.username for user in users">
+                                            <option value=""></option>
+                                        </select>
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Due to</label>
+                                <div class="form-group" ng-controller="datePickerController" ng-init="today()"><label class="col-lg-2 control-label">Due to</label>
                                     <div class="col-lg-10">
-                                        <input type="text" data-ng-model="due_to" id="due_to" placeholder="Due_to" required class="form-control">
+                                        <p class="input-group">
+                                            <input type="text"
+                                                   class="form-control"
+                                                   uib-datepicker-popup="{{format}}"
+                                                   data-ng-model="due_to"
+                                                   is-open="popup1.opened"
+                                                   datepicker-options="dateOptions"
+                                                   ng-required="true"
+                                                   close-text="Close"
+                                                   alt-input-formats="altInputFormats" />
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                        </p>
                                     </div>
                                 </div>
                                 <div class="form-group"><label class="col-lg-2 control-label">Comments</label>
@@ -35,9 +67,19 @@
                                         <textarea data-ng-model="comment" id="comment" cols="30" rows="10" placeholder="Comment" class="form-control"></textarea>
                                     </div>
                                 </div>
-                                <div class="form-group"><label class="col-lg-2 control-label">Tags</label>
+                                <div class="form-group" ng-controller="tagsController" ng-init="getTags()"><label class="col-lg-2 control-label">Tags</label>
                                     <div class="col-lg-10">
-                                        <input type="text" data-ng-model="tags" id="tags" placeholder="Tags" required class="form-control">
+                                        <select
+                                                chosen
+                                                multiple
+                                                data-ng-model="tags"
+                                                id="tags"
+                                                required
+                                                class="form-control"
+                                                data-placeholder-text-single="'Choose tags'"
+                                                ng-options="tag for tag in allTags">
+                                            <option value=""></option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

@@ -10,14 +10,14 @@
         <title>AngularJS Project</title>
 
         <link href="/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-        <!--<link href="/css/inspinia/inspinia.css" rel="stylesheet">-->
+        <link href="/css/plugins/chosen/chosen.css" rel="stylesheet">
 
         <!-- Font awesome -->
         <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
 
         <!-- Main Inspinia CSS files -->
         <link href="css/animate.css" rel="stylesheet">
-        <link id="loadBefore" href="/css/style.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet" id="loadBefore">
 
 
         <script type="text/javascript">
@@ -68,6 +68,7 @@
         <script type="text/javascript" src="/bower_components/angular-resource/angular-resource.min.js"></script>
         <script type="text/javascript" src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
         <script type="text/javascript" src="/bower_components/angular-animate/angular-animate.js"></script>
+        <script type="text/javascript" src="/js/plugins/chosen/chosen.jquery.js"></script>
         <script type="text/javascript" src="/bower_components/angular-chosen-localytics/dist/angular-chosen.js"></script>
 
         <!-- jQuery UI -->
@@ -102,6 +103,9 @@
 
         <script type="text/javascript" src="/tasks/tasks.client.module.js"></script>
         <script type="text/javascript" src="/tasks/controllers/tasks.client.controller.js"></script>
+        <script type="text/javascript" src="/tasks/controllers/chosenController.client.controller.js"></script>
+        <script type="text/javascript" src="/tasks/controllers/datePickerController.client.controller.js"></script>
+        <script type="text/javascript" src="/tasks/controllers/tagsController.client.controller.js"></script>
         <script type="text/javascript" src="/tasks/services/tasks.client.service.js"></script>
         <script type="text/javascript" src="/tasks/config/tasks.client.routes.js"></script>
 

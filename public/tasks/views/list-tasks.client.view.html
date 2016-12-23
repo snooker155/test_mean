@@ -15,7 +15,7 @@
                             <tbody>
                                 <tr data-ng-repeat="task in tasks">
                                     <td>
-                                        <span class="label label-primary">Added</span>
+                                        <span class="label label-primary">{{task.status}}</span>
                                     </td>
                                     <td class="issue-info">
                                         <a ui-sref="task({taskId: task._id})">

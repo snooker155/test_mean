@@ -12,6 +12,7 @@ var app = angular.module(appName, [
     // 'ngSanitize',
     'ngResource',
     // 'ngRoute',
+    'localytics.directives',        // Chosen select
     'index',
     'users',
     'tasks',

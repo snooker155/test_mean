@@ -6,6 +6,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="m-b-md">
+                                <a ng-click="delete()" class="btn btn-danger btn-xs pull-right">Delete task</a>
                                 <a ui-sref="taskEdit({taskId: task._id})" class="btn btn-white btn-xs pull-right">Edit task</a>
                                 <h2>{{task.title}}</h2>
                             </div>
@@ -46,7 +47,7 @@
                                 <dt>Completed:</dt>
                                 <dd>
                                     <div class="progress progress-striped m-b-sm">
-                                        <div style="width: {{task.progress ? task.progress : 10}}%;" class="progress-bar"></div>
+                                        <div style="width: {{task.progress}}%;" class="progress-bar"></div>
                                     </div>
                                 </dd>
                             </dl>
@@ -55,30 +56,59 @@
 
                     <div class="ibox-content">
                         <h2>TODO List</h2>
-                        <small>This is example of task list</small>
+                        <!--<small>This is example of task list</small>-->
                         <ul class="todo-list m-t ui-sortable">
                             <li data-ng-repeat="todo in task.todos">
-                                <input icheck type="checkbox" ng-model="check1">
-                                <span class="m-l-xs">{{todo.title}}</span>
-                                <small class="m-l-xs">{{todo.comment}}</small>
-                                <small class="label label-primary"><i class="fa fa-clock-o"></i>{{todo.due_to | date:'dd.mm.yyyy hh:mm'}}</small>
+                                <div ng-hide="updateFormTodo">
+                                    <input icheck type="checkbox" ng-model="todo.completed" ng-click="complete()">
+                                    <span class="m-l-xs" ng-class="{ 'todo-completed': todo.completed }" ng-click="updateFormTodo == true ? updateFormTodo = false : updateFormTodo = true">{{todo.title}}</span>
+                                    <!--<small class="m-l-xs">{{todo.comment}}</small>-->
+                                    <!--<small class="label label-primary"><i class="fa fa-clock-o"></i>{{todo.due_to | date:'dd.mm.yyyy hh:mm'}}</small>-->
+                                </div>
+                                <form class="form-horizontal" ng-show="updateFormTodo" ng-submit="updateTodo()">
+                                    <div class="form-group">
+                                        <div class="col-lg-12">
+                                            <textarea data-ng-model="todo.title" cols="30" rows="2" placeholder="Update Todo" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-lg-12">
+                                            <input class="btn btn-sm btn-primary" type="submit" value="Update Todo">
+                                            <button class="btn btn-sm btn-circle" type="button" ng-click="updateFormTodo = false"><i class="fa fa-times"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
                             </li>
-                            <li>
-                                <input icheck type="checkbox" ng-model="main.checkOne">
-                                <span class="m-l-xs">Go to shop and find some products.</span>
-                                <small class="label label-info"><i class="fa fa-clock-o"></i> 3 mins</small>
-                            </li>
-                            <li>
-                                <input icheck type="checkbox" ng-model="check2">
-                                <span class="m-l-xs">Send documents to Mike</span>
-                                <small class="label label-warning"><i class="fa fa-clock-o"></i> 2 mins</small>
-                            </li>
-                            <li>
-                                <input icheck type="checkbox" ng-model="check3">
-                                <span class="m-l-xs">Go to the doctor dr Smith</span>
-                                <small class="label label-danger"><i class="fa fa-clock-o"></i> 42 mins</small>
-                            </li>
+                            <!--<li>-->
+                                <!--<input icheck type="checkbox" ng-model="main.checkOne">-->
+                                <!--<span class="m-l-xs">Go to shop and find some products.</span>-->
+                                <!--<small class="label label-info"><i class="fa fa-clock-o"></i> 3 mins</small>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<input icheck type="checkbox" ng-model="check2">-->
+                                <!--<span class="m-l-xs">Send documents to Mike</span>-->
+                                <!--<small class="label label-warning"><i class="fa fa-clock-o"></i> 2 mins</small>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<input icheck type="checkbox" ng-model="check3">-->
+                                <!--<span class="m-l-xs">Go to the doctor dr Smith</span>-->
+                                <!--<small class="label label-danger"><i class="fa fa-clock-o"></i> 42 mins</small>-->
+                            <!--</li>-->
                         </ul>
+                        <a href="" class="text-primary" ng-click="formTodo = true" ng-hide="formTodo"><u>Add new Todo</u></a>
+                        <form class="form-horizontal" ng-show="formTodo" ng-submit="createTodo()">
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <textarea data-ng-model="newTodo.title" id="todo" cols="30" rows="2" placeholder="Add Todo" class="form-control"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <input class="btn btn-sm btn-primary" type="submit" value="Add Todo">
+                                    <button class="btn btn-sm btn-circle" type="button" ng-click="formTodo = false"><i class="fa fa-times"></i></button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
 
                     <div class="row m-t-sm">

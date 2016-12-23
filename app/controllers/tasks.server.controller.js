@@ -63,6 +63,11 @@ exports.update = function(req, res) {
     task.title = req.body.title;
     task.comment = req.body.comment;
     task.completed = req.body.completed;
+    task.todos = req.body.todos;
+    task.project = req.body.project;
+    task.assign_to = req.body.assign_to;
+    task.due_tO = req.body.due_tO;
+    task.progress = req.body.progress;
 
     task.save(function(err) {
         if (err) {
