@@ -1,4 +1,4 @@
-<div class="row" data-ng-controller="TasksController">
+<div class="row" data-ng-controller="IssuesController">
     <div class="col-lg-12">
         <div class="wrapper wrapper-content animated fadeInUp">
             <div class="ibox">
@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="m-b-md">
-                                <h2>New Task</h2>
+                                <h2>New Issue</h2>
                             </div>
 
                             <form class="form-horizontal" data-ng-submit="create()" novalidate>
@@ -15,21 +15,21 @@
                                         <input type="text" data-ng-model="title" id="title" placeholder="Title" required autofocus class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group" ng-init="getData()"><label class="col-lg-2 control-label">Project</label>
-                                    <div class="col-lg-10">
-                                        <select
-                                                chosen
-                                                data-ng-model="project"
-                                                id="project"
-                                                required
-                                                class="form-control"
-                                                data-placeholder-text-single="'Choose a project'"
-                                                ng-options="project.title for project in projects">
-                                            <option value=""></option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group" ng-init="getUsers()"><label class="col-lg-2 control-label">Assign to</label>
+                                <!--<div class="form-group" ng-init="getData()"><label class="col-lg-2 control-label">Project</label>-->
+                                    <!--<div class="col-lg-10">-->
+                                        <!--<select-->
+                                                <!--chosen-->
+                                                <!--data-ng-model="project"-->
+                                                <!--id="project"-->
+                                                <!--required-->
+                                                <!--class="form-control"-->
+                                                <!--data-placeholder-text-single="'Choose a project'"-->
+                                                <!--ng-options="project.title for project in projects">-->
+                                            <!--<option value=""></option>-->
+                                        <!--</select>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                                <div class="form-group"><label class="col-lg-2 control-label">Assign to</label>
                                     <div class="col-lg-10">
                                         <select
                                                 chosen

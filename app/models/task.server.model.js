@@ -41,16 +41,14 @@ var TaskSchema = new Schema({
         type: Number,
         default: 0
     },
-    assign_to: {
-        type: Schema.ObjectId,
-        ref: 'User'
-    },
+    assign_to: [{ type: Schema.ObjectId, ref: 'User' }],
     due_to: {
         type: Date,
         default: Date.now
     },
     todos: {},
-    tags: {}
+    tags: {},
+    activities: {},
 });
 
 mongoose.model('Task', TaskSchema);

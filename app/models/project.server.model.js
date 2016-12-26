@@ -27,7 +27,7 @@ var ProjectSchema = new Schema({
     },
     status: {
         type: String,
-        default: '',
+        default: 'Active',
         trim: true
     },
     due_to: {
@@ -35,8 +35,10 @@ var ProjectSchema = new Schema({
         default: Date.now
     },
     progress: {
-        type: String
+        type: String,
+        default: 0
     },
+    tasks: [{ type: Schema.ObjectId, ref: 'Task' }],
     team: {},
     tags: {},
     activities: {}

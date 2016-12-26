@@ -27,7 +27,7 @@ var IssueSchema = new Schema({
     },
     status: {
         type: String,
-        default: '',
+        default: 'Active',
         trim: true
     },
     due_to: {
@@ -40,7 +40,7 @@ var IssueSchema = new Schema({
     },
     category: {
         type: String,
-        default: '',
+        default: 'Basic',
         trim: true
     },
     tags: {}

@@ -4,7 +4,7 @@
 
 var express = require('express');
 var router = express.Router();
-var users = require('../controllers/users.server.controller'),
+var users = require('../../app/controllers/users.server.controller'),
     tasks = require('../../app/controllers/tasks.server.controller');
 
 router.route('/api/tasks')
@@ -16,8 +16,8 @@ router.route('/api/tasks/:taskId')
       .get(tasks.read)
       // .put(users.requiresLogin, tasks.hasAuthorization, tasks.update)
       // .delete(users.requiresLogin, tasks.hasAuthorization, tasks.delete);
-      .put(tasks.update)
-      .delete(tasks.delete);
+       .put(tasks.update)
+       .delete(tasks.delete);
 
 router.param('taskId', tasks.taskByID);
 

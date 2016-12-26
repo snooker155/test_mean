@@ -34,7 +34,7 @@ exports.create = function(req, res) {
 };
 
 exports.list = function(req, res) {
-    Project.find().sort('-created').populate('creator', 'name username').exec(function(err, projects) {
+    Project.find().sort('-created').populate('creator tasks', 'name username title comment created due_to assign_to status completed').exec(function(err, projects) {
         if (err) {
             return res.status(400).send({
                 message: getErrorMessage(err)
@@ -50,7 +50,7 @@ exports.read = function(req, res) {
 };
 
 exports.projectByID = function(req, res, next, id) {
-    Project.findById(id).populate('creator', 'name username').exec(function(err, project) {
+    Project.findById(id).populate('creator tasks', 'name username title comment created due_to assign_to status completed').exec(function(err, project) {
         if (err)
             return next(err);
 

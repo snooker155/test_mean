@@ -11,7 +11,7 @@
                                 <h2>{{task.title}}</h2>
                             </div>
                             <dl class="dl-horizontal">
-                                <dt>Status:</dt> <dd><span class="label label-primary">Active</span></dd>
+                                <dt>Status:</dt> <dd><span class="label label-primary">{{task.status}}</span></dd>
                             </dl>
                         </div>
                     </div>
@@ -19,8 +19,8 @@
                         <div class="col-lg-5">
                             <dl class="dl-horizontal">
 
-                                <dt>Created by:</dt> <dd>{{task.creator ? task.creator : "Anonym"}}</dd>
-                                <dt>Project:</dt> <dd>{{task.project}}</dd>
+                                <dt>Created by:</dt> <dd>{{task.creator ? task.creator.username : "Anonym"}}</dd>
+                                <dt>Project:</dt> <dd><a ui-sref="project({projectId: task.project._id})">{{task.project.title}}</a></dd>
                                 <!--<dt>Client:</dt> <dd><a href="#" class="text-navy"></a> </dd>-->
                                 <!--<dt>Phase:</dt> <dd>{{task.phase}}</dd>-->
                             </dl>
@@ -28,15 +28,17 @@
                         <div class="col-lg-7" id="cluster_info">
                             <dl class="dl-horizontal">
 
-                                <dt>Last Updated:</dt> <dd>{{task.created | date:'dd.mm.yyyy hh:mm:ss'}}</dd>
+                                <!--<dt>Last Updated:</dt> <dd>{{task.created | date:'dd.mm.yyyy hh:mm:ss'}}</dd>-->
                                 <dt>Created:</dt> <dd>{{task.created | date:'dd.mm.yyyy hh:mm:ss'}}</dd>
                                 <dt>Participants:</dt>
-                                <dd class="project-people">
-                                    <a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>
+                                <!--<dd class="project-people">-->
+                                <dd>
+                                    <a ng-repeat="user in task.assign_to">{{user.username}}</a>
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>-->
                                 </dd>
                             </dl>
                         </div>
@@ -201,30 +203,30 @@
                                             </div>
                                             <div class="ibox-content no-padding">
                                                 <ul class="list-group">
-                                                    <li class="list-group-item">
-                                                        <p><a class="text-info" href="#">@Alan Marry</a> I belive that. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 minuts ago</small>
+                                                    <li class="list-group-item" ng-repeat="activity in task.activities">
+                                                        <p><a class="text-info" href="">{{activity.user.title}}</a>{{activity.comment}}</p>
+                                                        <small class="block text-muted"><i class="fa fa-clock-o"></i>{{activity.date | date:"dd-mm-yyyy hh:mm:ss"}}</small>
                                                     </li>
-                                                    <li class="list-group-item">
-                                                        <p><a class="text-info" href="#">@Stock Man</a> Check this stock chart. This price is crazy! </p>
-                                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 hours ago</small>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <p><a class="text-info" href="#">@Kevin Smith</a> Lorem ipsum unknown printer took a galley </p>
-                                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 minuts ago</small>
-                                                    </li>
-                                                    <li class="list-group-item ">
-                                                        <p><a class="text-info" href="#">@Jonathan Febrick</a> The standard chunk of Lorem Ipsum</p>
-                                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 hour ago</small>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <p><a class="text-info" href="#">@Alan Marry</a> I belive that. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-                                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 1 minuts ago</small>
-                                                    </li>
-                                                    <li class="list-group-item">
-                                                        <p><a class="text-info" href="#">@Kevin Smith</a> Lorem ipsum unknown printer took a galley </p>
-                                                        <small class="block text-muted"><i class="fa fa-clock-o"></i> 2 minuts ago</small>
-                                                    </li>
+                                                    <!--<li class="list-group-item">-->
+                                                        <!--<p><a class="text-info" href="#">@Stock Man</a> Check this stock chart. This price is crazy! </p>-->
+                                                        <!--<small class="block text-muted"><i class="fa fa-clock-o"></i> 2 hours ago</small>-->
+                                                    <!--</li>-->
+                                                    <!--<li class="list-group-item">-->
+                                                        <!--<p><a class="text-info" href="#">@Kevin Smith</a> Lorem ipsum unknown printer took a galley </p>-->
+                                                        <!--<small class="block text-muted"><i class="fa fa-clock-o"></i> 2 minuts ago</small>-->
+                                                    <!--</li>-->
+                                                    <!--<li class="list-group-item ">-->
+                                                        <!--<p><a class="text-info" href="#">@Jonathan Febrick</a> The standard chunk of Lorem Ipsum</p>-->
+                                                        <!--<small class="block text-muted"><i class="fa fa-clock-o"></i> 1 hour ago</small>-->
+                                                    <!--</li>-->
+                                                    <!--<li class="list-group-item">-->
+                                                        <!--<p><a class="text-info" href="#">@Alan Marry</a> I belive that. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+                                                        <!--<small class="block text-muted"><i class="fa fa-clock-o"></i> 1 minuts ago</small>-->
+                                                    <!--</li>-->
+                                                    <!--<li class="list-group-item">-->
+                                                        <!--<p><a class="text-info" href="#">@Kevin Smith</a> Lorem ipsum unknown printer took a galley </p>-->
+                                                        <!--<small class="block text-muted"><i class="fa fa-clock-o"></i> 2 minuts ago</small>-->
+                                                    <!--</li>-->
                                                 </ul>
                                             </div>
                                         </div>
