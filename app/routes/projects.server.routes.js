@@ -9,15 +9,15 @@ var users = require('../controllers/users.server.controller'),
 
 router.route('/api/projects')
     .get(projects.list)
-    //.post(users.requiresLogin, projects.create);
-    .post(projects.create);
+    .post(users.requiresLogin, projects.create);
+    //.post(projects.create);
 
 router.route('/api/projects/:projectId')
     .get(projects.read)
-    //.put(users.requiresLogin, projects.hasAuthorization, projects.update)
-    //.delete(users.requiresLogin, projects.hasAuthorization, projects.delete);
-    .put(projects.update)
-    .delete(projects.delete);
+    .put(users.requiresLogin, projects.hasAuthorization, projects.update)
+    .delete(users.requiresLogin, projects.hasAuthorization, projects.delete);
+    //.put(projects.update)
+    //.delete(projects.delete);
 
 router.param('projectId', projects.projectByID);
 

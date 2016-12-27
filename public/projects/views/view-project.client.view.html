@@ -29,14 +29,16 @@
                             <dl class="dl-horizontal">
 
                                 <!--<dt>Last Updated:</dt> <dd>16.08.2014 12:15:57</dd>-->
-                                <dt>Created:</dt> <dd>{{project.created | date:"dd.mm.yyyy hh:mm:ss"}}</dd>
+                                <dt>Created:</dt> <dd>{{project.created | date:"dd.MM.yyyy hh:mm:ss"}}</dd>
                                 <dt>Participants:</dt>
-                                <dd class="project-people">
-                                    <a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>
+                                <!--<dd class="project-people">-->
+                                <dd>
+                                    <a ng-repeat="user in project.team">{{user.username}} / </a>
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>-->
                                 </dd>
                             </dl>
                         </div>
@@ -167,10 +169,10 @@
                                                         {{task.title}}
                                                     </td>
                                                     <td>
-                                                        {{task.created | date:"dd-mm-yyyy hh:mm:ss"}}
+                                                        {{task.created | date:"dd-MM-yyyy hh:mm:ss"}}
                                                     </td>
                                                     <td>
-                                                        {{task.due_to | date:"dd-mm-yyyy hh:mm:ss"}}
+                                                        {{task.due_to | date:"dd-MM-yyyy hh:mm:ss"}}
                                                     </td>
                                                     <td>
                                                         <p class="small">

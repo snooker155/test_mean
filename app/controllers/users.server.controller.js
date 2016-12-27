@@ -77,7 +77,7 @@ exports.register = function(req, res, next) {
 
 exports.logout = function(req, res) {
     req.logout();
-    res.redirect('/');
+    res.redirect('/login');
 };
 
 
@@ -93,7 +93,6 @@ exports.create = function (req, res, next) {
 };
 
 exports.list = function (req, res, next) {
-    console.log("123");
     User.find({}, function (err, users) {
         if(err){
             return next(err);
