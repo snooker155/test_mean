@@ -33,13 +33,25 @@
                                 <dt>Participants:</dt>
                                 <!--<dd class="project-people">-->
                                 <dd>
-                                    <a ng-repeat="user in task.assign_to">{{user.username}}</a>
+                                    <a ng-repeat="user in task.assign_to" ui-sref="user({userId: user._id})">{{user.username}}</a>
                                     <!--<a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>-->
                                     <!--<a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>-->
                                     <!--<a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>-->
                                     <!--<a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>-->
                                     <!--<a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>-->
                                 </dd>
+                            </dl>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <dl class="dl-horizontal">
+                                <dt>From:</dt> <dd>{{task.from | date:"dd.MM.yyyy hh:mm:ss"}}</dd>
+                            </dl>
+                        </div>
+                        <div class="col-lg-7" id="cluster_info">
+                            <dl class="dl-horizontal">
+                                <dt>Due to:</dt> <dd>{{task.due_to | date:"dd.MM.yyyy hh:mm:ss"}}</dd>
                             </dl>
                         </div>
                     </div>
@@ -51,6 +63,17 @@
                                     <div class="progress progress-striped m-b-sm">
                                         <div style="width: {{task.progress}}%;" class="progress-bar"></div>
                                     </div>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <dl class="dl-horizontal">
+                                <dt>Comments:</dt>
+                                <dd>
+                                    <p>{{task.comment}}</p>
                                 </dd>
                             </dl>
                         </div>
@@ -203,8 +226,8 @@
                                             </div>
                                             <div class="ibox-content no-padding">
                                                 <ul class="list-group">
-                                                    <li class="list-group-item" ng-repeat="activity in task.activities">
-                                                        <p><a class="text-info" href="">{{activity.user.username}}</a>{{activity.comment}}</p>
+                                                    <li class="list-group-item" ng-repeat="activity in task.activities | orderBy: '-date'">
+                                                        <p><a class="text-info" ui-sref='user({userId: activity.user._id})'>@{{activity.user.username}} </a>{{activity.comment}}</p>
                                                         <small class="block text-muted"><i class="fa fa-clock-o"></i>{{activity.date | date:"dd-MM-yyyy hh:mm:ss"}}</small>
                                                     </li>
                                                     <!--<li class="list-group-item">-->

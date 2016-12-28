@@ -40,11 +40,12 @@
                                     </div>
                                 </td>
                                 <td class="project-people">
-                                    <a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>
-                                    <a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>
+                                    <a ng-repeat="person in project.team">{{person.username}}</a>
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a3.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a1.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a2.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a4.jpg"></a>-->
+                                    <!--<a href=""><img alt="image" class="img-circle" src="img/a5.jpg"></a>-->
                                 </td>
                                 <td class="project-actions">
                                     <a ui-sref="project({projectId: project._id})" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>

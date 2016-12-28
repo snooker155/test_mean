@@ -15,16 +15,16 @@
                                         <input type="text" data-ng-model="title" id="title" placeholder="Title" required autofocus class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group" ng-init="getData()"><label class="col-lg-2 control-label">Project</label>
+                                <div class="form-group" ng-init="getProjects()"><label class="col-lg-2 control-label">Project</label>
                                     <div class="col-lg-10">
                                         <select
                                                 chosen
-                                                data-ng-model="project"
+                                                ng-model="project"
                                                 id="project"
                                                 required
                                                 class="form-control"
-                                                data-placeholder-text-single="'Choose a project'"
-                                                ng-options="project.title for project in projects">
+                                                placeholder-text-single="'Choose a project'"
+                                                ng-options="project._id as project.title for project in projects">
                                             <option value=""></option>
                                         </select>
                                     </div>
@@ -38,13 +38,13 @@
                                                 id="assign_to"
                                                 required
                                                 class="form-control"
-                                                data-placeholder-text-single="'Choose a user'"
+                                                data-placeholder-text-multiple="'Choose a user'"
                                                 ng-options="user.username for user in users">
                                             <option value=""></option>
                                         </select>
                                     </div>
                                 </div>
-                                <div class="form-group" ng-init="today()"><label class="col-lg-2 control-label">Due to</label>
+                                <div class="form-group" ng-init="today()"><label class="col-lg-2 control-label">From</label>
                                     <div class="col-lg-10">
                                         <p class="input-group">
                                             <span class="input-group-btn">
@@ -53,8 +53,26 @@
                                             <input type="text"
                                                    class="form-control"
                                                    uib-datepicker-popup="{{format}}"
-                                                   data-ng-model="due_to"
+                                                   data-ng-model="from"
                                                    is-open="popup1.opened"
+                                                   datepicker-options="dateOptions"
+                                                   ng-required="true"
+                                                   close-text="Close"
+                                                   alt-input-formats="altInputFormats" />
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="form-group" ng-init="today()"><label class="col-lg-2 control-label">Due to</label>
+                                    <div class="col-lg-10">
+                                        <p class="input-group">
+                                            <span class="input-group-btn">
+                                                <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                                            </span>
+                                            <input type="text"
+                                                   class="form-control"
+                                                   uib-datepicker-popup="{{format}}"
+                                                   data-ng-model="due_to"
+                                                   is-open="popup2.opened"
                                                    datepicker-options="dateOptions"
                                                    ng-required="true"
                                                    close-text="Close"

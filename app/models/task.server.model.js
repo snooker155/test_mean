@@ -42,6 +42,10 @@ var TaskSchema = new Schema({
         default: 0
     },
     assign_to: [{ type: Schema.ObjectId, ref: 'User' }],
+    from: {
+        type: Date,
+        default: Date.now
+    },
     due_to: {
         type: Date,
         default: Date.now

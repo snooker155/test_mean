@@ -16,6 +16,7 @@ angular.module('tasks').controller('TasksController', ['$scope', '$state', '$loc
                 title: this.title,
                 project: this.project,
                 assign_to: this.assign_to,
+                from: this.from,
                 due_to: this.due_to,
                 comment: this.comment,
                 tags: this.tags,
@@ -155,6 +156,10 @@ angular.module('tasks').controller('TasksController', ['$scope', '$state', '$loc
             $scope.popup1.opened = true;
         };
 
+        $scope.open2 = function() {
+            $scope.popup2.opened = true;
+        };
+
         $scope.dateOptions = {
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
@@ -170,8 +175,19 @@ angular.module('tasks').controller('TasksController', ['$scope', '$state', '$loc
             opened: false
         };
 
-        $scope.getData = function () {
+        $scope.popup2 = {
+            opened: false
+        };
+
+        $scope.getProjects = function () {
             $scope.projects = Projects.query();
+            if($state.params.projectId){
+                Projects.get({
+                    projectId: $state.params.projectId
+                }, function (response) {
+                    $scope.project = response._id;
+                });
+            }
         };
 
         $scope.getTags = function () {

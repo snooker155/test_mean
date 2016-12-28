@@ -1,0 +1,47 @@
+<div class="wrapper wrapper-content  animated fadeInRight" data-ng-controller="UsersController">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox" data-ng-init="find()">
+                <div class="ibox-title">
+                    <h5>Users list</h5>
+                    <div class="ibox-tools">
+                        <a ui-sref="usersCreate" class="btn btn-primary btn-xs">Add user</a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <h3 ng-hide="users.length">There are no tasks yet</h3>
+                    <div class="table-responsive">
+                        <table class="table table-hover issue-tracker">
+                            <tbody>
+                            <tr data-ng-repeat="user in users">
+                                <td>
+                                    {{user.name}}
+                                </td>
+                                <td class="issue-info">
+                                    {{user.username}}
+                                </td>
+                                <!--<td>-->
+                                <!--{{task.project}}-->
+                                <!--</td>-->
+                                <!--<td>-->
+                                <!--{{task.creator}}-->
+                                <!--</td>-->
+                                <td>
+                                    {{user.email}}
+                                </td>
+                                <!--<td>-->
+                                <!--<span class="pie" style="display: none;">0.52,1.041</span><svg class="peity" height="16" width="16"><path d="M 8 8 L 8 0 A 8 8 0 0 1 14.933563796318165 11.990700825968545 Z" fill="#1ab394"></path><path d="M 8 8 L 14.933563796318165 11.990700825968545 A 8 8 0 1 1 7.999999999999998 0 Z" fill="#d7d7d7"></path></svg>-->
+                                <!--2d-->
+                                <!--</td>-->
+                                <!--<td class="text-right">-->
+                                    <!--<button class="btn btn-white btn-xs" data-ng-repeat="tag in user.tags">{{tag}}</button>-->
+                                <!--</td>-->
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

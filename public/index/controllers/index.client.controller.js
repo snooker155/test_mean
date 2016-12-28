@@ -14,7 +14,6 @@ angular.module('index').controller('IndexController', ['$scope', '$state', '$loc
                      });
                  });
              });
-             console.log(activities);
              $scope.activities = activities;
         };
 

@@ -12,7 +12,7 @@ angular.module('tasks').config(['$stateProvider',
 
         var tasksCreateState = {
             name: 'tasksCreate',
-            url: '/tasks/create',
+            url: '/tasks/create/:projectId',
             templateUrl: 'tasks/views/create-task.client.view.html'
         };
 

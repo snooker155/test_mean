@@ -10,6 +10,7 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$state',
             var project = new Projects({
                 title: this.title,
                 comment: this.comment,
+                from: this.from,
                 due_to: this.due_to,
                 team: this.team,
                 tags: this.tags,
@@ -69,6 +70,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$state',
             $scope.popup1.opened = true;
         };
 
+        $scope.open2 = function() {
+            $scope.popup2.opened = true;
+        };
+
         $scope.dateOptions = {
             formatYear: 'yy',
             maxDate: new Date(2020, 5, 22),
@@ -81,6 +86,10 @@ angular.module('projects').controller('ProjectsController', ['$scope', '$state',
         $scope.altInputFormats = ['M!/d!/yyyy'];
 
         $scope.popup1 = {
+            opened: false
+        };
+
+        $scope.popup2 = {
             opened: false
         };
 
